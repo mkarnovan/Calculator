@@ -75,11 +75,16 @@ class ViewController: UIViewController {
         case "×":
             operateWithTwoOperands{$0 * $1}
         case "÷":
+            if secondOperand == 0 {
+                
+            }
             operateWithTwoOperands{$0 / $1}
         default:
             break
         }
     }
+    
+    
     
     @IBAction func clearButton(_ sender: UIButton) {
         firstOperand = 0
@@ -117,5 +122,9 @@ class ViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.identifier)
+        (segue.destination as! TableViewController).viewDidLoad()
+    }
 }
 
